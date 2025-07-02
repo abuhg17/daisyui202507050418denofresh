@@ -29,7 +29,7 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "denofresh202507050418daisy"
+          project: "daisyui202507050418fresh"
           entrypoint: "main.ts"
           root: "."
           
