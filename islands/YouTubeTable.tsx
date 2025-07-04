@@ -107,6 +107,7 @@ const arrs = [
   "w3-CT_aiZxQ",
   "AAwiJKy1Xzw",
   "-4ADGW7TE0Q",
+  "sMinmwkE7mY",
 ];
 
 const MAX_BATCH_SIZE = 50;
@@ -128,7 +129,9 @@ export default function YouTubeTable() {
       if (!raw || !time) return null;
 
       const cacheTime = parseInt(time);
-      const FORCE_CLEAR_BEFORE = new Date("2025-06-27T21:33:00+08:00").getTime();
+      const FORCE_CLEAR_BEFORE = new Date(
+        "2025-06-27T21:33:00+08:00"
+      ).getTime();
 
       if (cacheTime < FORCE_CLEAR_BEFORE) {
         localStorage.removeItem(CACHE_KEY);
@@ -156,7 +159,11 @@ export default function YouTubeTable() {
   }
 
   // API 請求，帶重試
-  async function fetchWithRetry(url: string, maxRetries = 3, delayMs = 500): Promise<any> {
+  async function fetchWithRetry(
+    url: string,
+    maxRetries = 3,
+    delayMs = 500
+  ): Promise<any> {
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
         const res = await fetch(url);
@@ -196,7 +203,9 @@ export default function YouTubeTable() {
         );
 
         if (!data.items || !data.items.length) {
-          console.warn(`批次無影片資料: ${start} ~ ${start + batch.length - 1}`);
+          console.warn(
+            `批次無影片資料: ${start} ~ ${start + batch.length - 1}`
+          );
           continue;
         }
 
@@ -335,4 +344,3 @@ export default function YouTubeTable() {
     </div>
   );
 }
-
